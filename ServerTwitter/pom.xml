@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>.Pom</groupId>
+    <artifactId>Golf</artifactId>
+    <packaging>grails-app</packaging>
+    <version>0.1</version>
+
+    <name>Golf</name>
+    <description>Golf</description>
+
+    <properties>
+        <grails.version>2.4.3</grails.version>
+        <h2.version>1.3.170</h2.version>
+    <git.dir>${project.basedir}/../.git</git.dir>
+    <!-- this makes maven-tools not bump us to snapshot versions -->
+    <stabilized>true</stabilized>
+    <!-- Fill these in via https://dev.twitter.com/apps -->
+    <consumer.key>Po4TnwsIMhUdJ0vzC0pQzt20C</consumer.key>
+    <consumer.secret>I8w33ikJTG6DNJyTvD64gTzgDkvuJZ3edfmQcqY30k7L9oqxTY</consumer.secret>
+    <access.token>1918581332-tdGqweroVY16eEV5h3MBTeTpoXHPqMfrKMoMYS9</access.token>
+    <access.token.secret>fUDXGI6f16sG3whT9k6MwAVk4rLOHO10LWvYAlOueDH69</access.token.secret>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.grails</groupId>
+            <artifactId>grails-dependencies</artifactId>
+            <version>${grails.version}</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails</groupId>
+            <artifactId>grails-test</artifactId>
+            <version>${grails.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.grails</groupId>
+            <artifactId>grails-plugin-testing</artifactId>
+            <version>${grails.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>0.7-groovy-2.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        
+        <dependency>
+            <groupId>org.grails</groupId>
+            <artifactId>grails-datastore-test-support</artifactId>
+            <version>1.0-grails-2.4</version>
+            <scope>test</scope>
+            
+            
+        </dependency>
+        
+        
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>scaffolding</artifactId>
+            <version>2.1.2</version>
+            <scope>compile</scope>
+            
+            <type>zip</type>
+            
+        </dependency>
+        
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>cache</artifactId>
+            <version>1.1.7</version>
+            <scope>compile</scope>
+            
+            <type>zip</type>
+            
+        </dependency>
+        
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>asset-pipeline</artifactId>
+            <version>1.9.6</version>
+            <scope>compile</scope>
+            
+            <type>zip</type>
+            
+        </dependency>
+        
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>hibernate4</artifactId>
+            <version>4.3.5.5</version>
+            <scope>runtime</scope>
+            
+            <type>zip</type>
+            
+        </dependency>
+        
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>database-migration</artifactId>
+            <version>1.4.0</version>
+            <scope>runtime</scope>
+            
+            <type>zip</type>
+            
+        </dependency>
+        
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>jquery</artifactId>
+            <version>1.11.1</version>
+            <scope>runtime</scope>
+            
+            <type>zip</type>
+            
+        </dependency>
+        
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>tomcat</artifactId>
+            <version>7.0.55</version>
+            <scope>provided</scope>
+            
+            <type>zip</type>
+            
+        </dependency>
+        
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>webxml</artifactId>
+            <version>1.4.1</version>
+            <type>zip</type>
+            <scope>runtime</scope>
+        </dependency>
+
+    <dependency>
+      <groupId>com.twitter</groupId>
+      <artifactId>hbc-twitter4j</artifactId>
+      <version>2.2.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.2</version>
+    </dependency>
+
+    </dependencies>
+
+    <build>
+        <pluginManagement/>
+
+        <plugins>
+            <!-- Disables the Maven surefire plugin for Grails applications, as we have our own test runner -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>surefire-it</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.4.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>plugins</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.grails</groupId>
+                <artifactId>grails-maven-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <grailsVersion>${grails.version}</grailsVersion>
+                </configuration>
+                <extensions>true</extensions>
+            </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.7</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <configuration>
+          <mainClass>com.twitter.hbc.example.SampleStreamExample</mainClass>
+          <arguments>
+            <argument>${consumer.key}</argument>
+            <argument>${consumer.secret}</argument>
+            <argument>${access.token}</argument>
+            <argument>${access.token.secret}</argument>
+          </arguments>
+        </configuration>
+      </plugin>
+        </plugins>
+      
+    
+
+    </build>
+
+    <repositories>
+        <repository>
+            <id>grails</id>
+            <name>grails</name>
+            <url>http://repo.grails.org/grails/core</url>
+        </repository>
+        <repository>
+            <id>grails-plugins</id>
+            <name>grails-plugins</name>
+            <url>http://repo.grails.org/grails/plugins</url>
+        </repository>
+    </repositories>
+
+    <profiles>
+        <profile>
+            <id>tools</id>
+            <activation>
+                <property>
+                    <name>java.vendor</name>
+                    <value>Sun Microsystems Inc.</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>com.sun</groupId>
+                    <artifactId>tools</artifactId>
+                    <version>${java.version}</version>
+                    <scope>system</scope>
+                    <systemPath>${java.home}/../lib/tools.jar</systemPath>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+  <parent>
+    <groupId>com.twitter</groupId>
+    <artifactId>hbc</artifactId>
+    <version>2.2.1-SNAPSHOT</version>
+  </parent>
+  
+</project>
