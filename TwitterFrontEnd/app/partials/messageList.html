@@ -1,0 +1,61 @@
+<div ng-app="GolfApp" ng-controller="AnalyzeCntl" ng-init="getMessages()">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          
+          <a class="navbar-brand" href="#">Twitter Tracker</a>
+        </div>
+      
+      </div>
+</nav>
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar">
+              <li> <a href="#">Manage Tracking</a></li>
+              <li><a href=#/list>Show Messages</a></li>
+
+            </ul>
+          
+        </div>
+        </div>
+</div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Statistics</h2>
+            </div>
+            <div class="panel-body">
+             
+             {{"Message Count: " + wordList[index].count}}
+             <span>Tracking Started at {{messageList[0].date}}</span>
+             <span>Tracking ended at {{messageList[messageList.length - 1].date}}</span>
+            </div>
+        </div>
+    <div class="panel panel-default">
+    <div class="panel-heading">
+
+    <span ng-repeat="trackedWords in wordList track by $index"  >
+        <button class="btn-toolbar" ng-click= changeWord($index)>{{trackedWords.name}}</button>
+    </span>
+    </div>
+    
+    <div class="panel-body">
+
+    <div ng-repeat="message in messageList track by $index" >
+                   
+        {{message.message + message.date}}  <hr>
+                
+                </div> 
+        </div>
+    </div>
+      </div>
+</div>
+
+           
+              
+          
